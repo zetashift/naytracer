@@ -1,2 +1,2 @@
 # naytracer
-Ray Tracing in One Weekend using the lovely programming language Nim. 
+Ray Tracing Challenge using the lovely programming language Nim. 
