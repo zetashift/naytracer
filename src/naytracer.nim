@@ -1,6 +1,3 @@
-# This is just an example to get you started. A typical hybrid package
-# uses this file as the main entry point of the application.
-
 import naytracerpkg/[nttuple, canvas]
 
 type
@@ -26,7 +23,7 @@ when isMainModule:
   var
     cvs = newCanvas(900, 550)
     env = initEnvironment(initVector(0, -0.1, 0), initVector(-0.05, 0, 0))
-    velocity = (initVector(0.4, 0.8, 0).normalize * 8.25).toVector
+    velocity = (initVector(0.4, 0.8, 0).normalize * 1).toVector
     p = initProjectile(initPoint(0, 1, 0), velocity)
     color = initColor(0.8, 0.4, 0.2)
   
