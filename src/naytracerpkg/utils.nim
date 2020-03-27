@@ -1,6 +1,6 @@
-const epsilon = 0.00001
 
-proc equal*(a, b: float): bool =
+func equal*(a, b: float): bool =
+  const epsilon = 0.0001
   result = if abs(a - b) < epsilon:
              true
            else:

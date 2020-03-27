@@ -24,20 +24,49 @@ func initColor*(r, g, b: float): Color =
 func toVector*(t: Tuple): Vector =
   case t.w:
     of 0: result = Vector(x: t.x, y: t.y, z: t.z, w: t.w)
-    of 1: raise newException(Exception, "This is not a Vector but a Point!")
-    else: raise newException(Exception, "Wrong value for w parameter")
+    of 1: raise newException(ValueError, "This is not a Vector but a Point!")
+    else: raise newException(ValueError, "Wrong value for w parameter")
 
 func toPoint*(t: Tuple): Point =
   case t.w:
-    of 0: raise newException(Exception, "This is not a valid Point but a Vector")
+    of 0: raise newException(ValueError, "This is not a valid Point but a Vector")
     of 1: result = Point(x: t.x, y: t.y, z: t.z, w: t.w)
-    else: raise newException(Exception, "Wrong value for w parameter")
+    else: raise newException(ValueError, "Wrong value for w parameter")
 
 func isVector*(t: Tuple): bool =
   result = t.w == 0.0
 
 func isPoint*(t: Tuple): bool =
   result = t.w == 1.0
+
+func `$`*(t: Tuple): string =
+  result = $t.x & " " & $t.y & " " & $t.z & " " & $t.w
+
+func `[]`*(t: Tuple, idx: int): float =
+  case idx:
+    of 0:
+      result = t.w
+    of 1:
+      result = t.y
+    of 2:
+      result = t.x
+    of 3:
+      result = t.z
+    else:
+      raise newException(IndexError, "Invalid index supplied")
+
+proc `[]=`*(t: var Tuple, idx: int, v: float) =
+  case idx:
+    of 0:
+      t.x = v
+    of 1:
+      t.y = v
+    of 2:
+      t.z = v
+    of 3:
+      t.w = v
+    else:
+      raise newException(IndexError, "Wrong index value supplied")
 
 func `==`*(t1, t2: Tuple): bool =
   result = t1.x.equal(t2.x) and t1.y.equal(t2.y) and t1.z.equal(t2.z) and

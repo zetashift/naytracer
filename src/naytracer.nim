@@ -12,7 +12,6 @@ func tick(env: Environment, projectile: Projectile): Projectile =
   result = Projectile(pos: (projectile.pos + projectile.velocity).toPoint,
       velocity: (projectile.velocity + env.gravity + env.wind).toVector)
 
-
 func initEnvironment(grav, wind: Vector): Environment =
   result = Environment(gravity: grav, wind: wind)
 
@@ -30,4 +29,5 @@ when isMainModule:
   while (p.pos.y > 0):
     cvs.writePixel(p.pos.x.int, cvs.height - p.pos.y.int, color)
     p = tick(env, p)
+  
   cvs.toPPM.writePPM()

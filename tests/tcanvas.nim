@@ -1,6 +1,5 @@
 import naytracerpkg/[canvas, nttuple]
 
-
 block createACanvas:
   let c = newCanvas(10, 20)
   doAssert c.width == 10 and c.height == 20
@@ -25,8 +24,6 @@ block drawAPixel:
 #   # 5 3
 #   # 255
 #   # """
-
-
 
 # block constructPPM:
 #   var canvas = newCanvas(5, 3)
